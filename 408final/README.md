@@ -2,7 +2,7 @@ Project: Sports Letterboxd
 Names: Haley, Laurel, Alex, Rohm
 
 
-Set up instructions (do in terminal)
+## Set up instructions (do in terminal)
 
 Create a virtual environment:
 python3 -m venv .venv (for mac)
