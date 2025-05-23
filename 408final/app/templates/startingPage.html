@@ -64,8 +64,8 @@
 <body>
     <div class="welcome-box">
         <h1>🏟️ Welcome to Sports Reacting</h1>
-        <button class="btn" onclick="location.href='login.html'">Login</button>
-        <button class="btn secondary" onclick="location.href='create_account.html'">Create Account</button>
+                <button class="btn" onclick="location.href='{{ url_for('login') }}';">Login</button>
+        <button class="btn secondary" onclick="location.href='{{ url_for('create') }}';">Create Account</button>
     </div>
 </body>
 </html>
