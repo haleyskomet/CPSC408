@@ -1,0 +1,139 @@
+<!--- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user[0] }}'s Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .profile-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        .info {
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <h2>Welcome, {{ user[0] }}!</h2>
+        <div class="info"><strong>Favorite Team:</strong> {{ user[1] }}</div>
+        <div class="info"><strong>Rating:</strong> {{ user[2] }}/10</div>
+        <div class="info"><strong>Comment:</strong> {{ user[3] }}</div>
+    </div>
+</body>
+</html> --->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Posts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 2rem;
+        }
+
+        .post {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .rating {
+            font-weight: bold;
+            color: #2196f3;
+        }
+
+        .date {
+            color: gray;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+    <form action="/filter-results" method="get">
+    <label for="filter-type">Filter by:</label>
+    </select>
+    <input type="text" name="query" id="filter-input" placeholder="Enter filter text...">
+
+    <button type="submit">Search</button>
+</form>
+
+
+<body>
+    <h2>Your Posts</h2>
+
+    {% if posts %}
+        {% for post in posts %}
+            <div class="post">
+                <div class="content">{{ post[1] }}</div>
+                <div class="rating">Rating: {{ post[2] }}/10</div>
+                <div class="date">{{ post[3] }}</div>
+
+                <style>
+                .popup {
+                    display: none;
+                    position: fixed;
+                    top: 30%;
+                    left: 50%;
+                    transform: translate(-50%, -30%);
+                    background: white;
+                    padding: 1rem;
+                    border-radius: 8px;
+                    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+                    z-index: 1000;
+                    width: 300px;
+                }
+
+                input[type="checkbox"]:checked + .popup {
+                    display: block;
+                }
+
+                .close-btn {
+                    float: right;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                }
+                </style>
+
+                <!-- Trigger -->
+                <label for="popup-{{ loop.index }}" style="cursor: pointer; color: blue;">Edit</label>
+                <input type="checkbox" id="popup-{{ loop.index }}" style="display: none;" />
+
+                <!-- Popup -->
+                <div class="popup" id="popup-content-{{ loop.index }}">
+                    <label for="popup-{{ loop.index }}" class="close-btn">&times;</label>
+                    <h3>Edit Post</h3>
+                    <p>{{ post[1] }}</p>
+                    <input type="text" placeholder="Edit content..." />
+                    <button>Save</button>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>You haven't posted anything yet.</p>
+    {% endif %}
+
+    <button type="submit">Export of CSV </button>
+
+</body>
+</html>
+
+
