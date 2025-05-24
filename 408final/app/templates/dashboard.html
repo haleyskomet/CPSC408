@@ -83,9 +83,18 @@
     {% if posts %}
         {% for post in posts %}
             <div class="post">
-                <div class="content">{{ post[1] }}</div>
-                <div class="rating">Rating: {{ post[2] }}/10</div>
-                <div class="date">{{ post[3] }}</div>
+                <div class="score">
+                    <strong>{{ post[2] }}</strong> — 
+                    <span class="teams">{{ post[0] }} vs {{ post[1] }}</span>
+                </div>
+                <div class="details">
+                    <span class="sport">{{ post[4] }}</span> |
+                    <span class="league">{{ post[5] }}</span> |
+                    <span class="date">{{ post[3] }}</span>
+                </div>
+                <div class="rating">Rating: {{ post[6] }}/5</div>
+                <div class="comment">Comments: {{ post[7] }}</div>
+
 
                 <style>
                 .popup {
@@ -131,9 +140,9 @@
         <p>You haven't posted anything yet.</p>
     {% endif %}
 
-    <button type="submit">Export of CSV </button>
+    <form method="GET" action="{{ url_for('export_csv', user_id=user_id) }}">
+        <button type="submit" class="btn export">Export CSV</button>
+    </form>
 
 </body>
 </html>
-
-
