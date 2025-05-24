@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sports Watching - Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #00c9ff, #92fe9d);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .dashboard {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 0.7rem;
+            margin-top: 1rem;
+            background-color: #00a8cc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #007c99;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>What would you like to do?</h1>
+        <button type="button" onclick="location.href='{{ url_for('createPost', user_id=user_id) }}';">Create a Post!</button>
+
+        <button type="button" onclick="location.href='{{ url_for('dashboard', user_id=user_id) }}';">See Your Previous Posts</button>
+
+    </div>
+</body>
+</html>
