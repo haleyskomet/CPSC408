@@ -76,5 +76,25 @@ def create():
 def dashboard(user_id):
     return render_template('action.html', user_id=user_id)
 
+def ratingConversionToInt(rating):
+    rating = rating.lower().strip()
+    numbers = {
+        "zero": 0, "one": 1, "two": 2, "three": 3, 
+        "four": 4, "five": 5
+    }
+    try:
+        rating = int(rating)
+        if (rating >= 1 and rating <= 5):
+            return rating
+    except:
+        pass
+
+    value = 0
+    if rating in numbers:
+        value = numbers[rating]
+        return value
+    else:
+        return -1
+
 if __name__ == '__main__':
     app.run(debug=True)
