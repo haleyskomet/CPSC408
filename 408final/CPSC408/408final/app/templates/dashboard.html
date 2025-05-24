@@ -1,0 +1,61 @@
+<!--- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user[0] }}'s Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .profile-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        .info {
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <h2>Welcome, {{ user[0] }}!</h2>
+        <div class="info"><strong>Favorite Team:</strong> {{ user[1] }}</div>
+        <div class="info"><strong>Rating:</strong> {{ user[2] }}/10</div>
+        <div class="info"><strong>Comment:</strong> {{ user[3] }}</div>
+    </div>
+</body>
+</html> --->
+
+<!DOCTYPE html>
+<html>
+<head><title>Users</title></head>
+<body>
+    <h1>User List</h1>
+    <ul id="userList"></ul>
+
+    <script>
+        fetch('/users')
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById('userList');
+                data.forEach(user => {
+                    const item = document.createElement('li');
+                    item.textContent = `ID: ${user[0]}, Name: ${user[1]}, Email: ${user[2]}`;
+                    list.appendChild(item);
+                });
+            });
+    </script>
+</body>
+</html>
+
